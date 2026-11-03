@@ -14,14 +14,22 @@ Deeper references live in [`docs/`](docs/):
 If `_AI_ONBOARDING.md` exists at the repo root, this project has not been
 onboarded yet. Before any other work:
 
-1. Read `_AI_ONBOARDING.md` in full — it is the onboarding playbook.
-2. Follow it: audit the repository, then fill in every `STUB` in this file
+1. **Guard — is this the template kit itself?** If `KIT.md` exists at the
+   repo root, this repository is the AI-onboarding kit, not an onboarding
+   target. Its `AGENTS.md`, `CLAUDE.md`, `docs/`, and `_AI_ONBOARDING.md`
+   are generic templates and the playbook, meant to be *copied* into other
+   projects — not filled in here. Do **not** fill the stubs with kit-specific
+   content and do **not** delete `_AI_ONBOARDING.md`; it is the kit's core
+   asset. Skip the steps below and work on the kit itself.
+2. Read `_AI_ONBOARDING.md` in full — it is the onboarding playbook.
+3. Follow it: audit the repository, then fill in every `STUB` in this file
    and in the `docs/` files it refers to, using the research instructions
    inside each stub.
-3. When every stub is filled and verified, **delete `_AI_ONBOARDING.md`**
+4. When every stub is filled and verified, **delete `_AI_ONBOARDING.md`**
    and record the onboarding in `docs/CHANGELOG.md`.
 
-Do not delete `_AI_ONBOARDING.md` before the stubs are filled.
+Do not delete `_AI_ONBOARDING.md` before the stubs are filled — and never in
+the kit's own repo (see the guard above).
 
 ---
 
