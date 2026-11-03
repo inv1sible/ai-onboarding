@@ -2,10 +2,13 @@
 
 A playbook for driving an existing coding project into an AI-ready state —
 what to do, in what order, and the reasoning behind each step. Written to be
-applied as-is to another project: no project-specific content. The
-`AGENTS.md`, `CLAUDE.md`, and `docs/` stubs in this repo are the generic
-templates this playbook produces — copy them into the target project and
-fill in each stub.
+applied as-is to another project: no project-specific content.
+
+**How to use it:** copy `AGENTS.md`, `CLAUDE.md`, and `docs/` from this repo
+into the target project (never overwrite its existing `README.md`), and copy
+this file as `_AI_ONBOARDING.md`. The `AGENTS.md` template tells the agent to
+follow this playbook on first run, fill in every stub, and then delete
+`_AI_ONBOARDING.md`.
 
 ---
 
@@ -256,8 +259,9 @@ day for a medium project, most of it in steps 1–2.
       install steps
 
 ### Phase B — Write the system
-- [ ] Copy the templates from this repo (`AGENTS.md`, `CLAUDE.md`, `docs/`)
-      as the starting point
+- [ ] Copy the templates from this repo (`AGENTS.md`, `CLAUDE.md`, `docs/`,
+      and this file as `_AI_ONBOARDING.md`) as the starting point — never
+      overwrite the target project's existing `README.md`
 - [ ] `AGENTS.md` at repo root using the §3/Step-2 structure (10 sections)
 - [ ] `docs/ARCHITECTURE.md` — system map with short code snippets
 - [ ] `docs/MEMORY.md` — conventions, naming, patterns, gotchas, do/don't
@@ -276,6 +280,8 @@ day for a medium project, most of it in steps 1–2.
 - [ ] Re-verify every "done" task against repo state
 - [ ] Commit docs in their own branch/MR (docs-only = low-risk review)
 - [ ] Record the onboarding itself in `docs/CHANGELOG.md`
+- [ ] **Delete `_AI_ONBOARDING.md`** — the onboarding is done; the doc
+      system is now self-sufficient
 
 ### Ongoing maintenance (the loop that keeps it working)
 - [ ] Every branch: update `docs/TASKS.md` (done → delete, open → carry over)
@@ -290,7 +296,9 @@ day for a medium project, most of it in steps 1–2.
 ## 7. Template skeleton for `AGENTS.md`
 
 The `AGENTS.md` in this repo is this skeleton with the stubs in place —
-copy it into the target project and fill in each stub.
+copy it into the target project and fill in each stub. The onboarding block
+at the top is what makes the kit self-driving: it tells the agent to follow
+`_AI_ONBOARDING.md`, fill the stubs, and then delete the playbook.
 
 ```markdown
 # AGENTS.md — <project>
@@ -298,6 +306,10 @@ copy it into the target project and fill in each stub.
 Guidance for AI coding agents (and humans). Read this file first.
 Deeper references live in `docs/`: ARCHITECTURE, MEMORY, TESTING, TASKS,
 ROADMAP, CHANGELOG.
+
+## Onboarding (first run only)
+(if _AI_ONBOARDING.md exists: follow it, fill every stub it refers to,
+then delete _AI_ONBOARDING.md)
 
 ## General agentic development principles
 (think before coding / clarify before implementing / keep it simple /

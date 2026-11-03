@@ -9,6 +9,20 @@ Deeper references live in [`docs/`](docs/):
 - [Memory — conventions & gotchas](docs/MEMORY.md) — patterns, naming, pitfalls, do/don't
 - [Testing](docs/TESTING.md) — how to run and add tests
 
+## Onboarding (first run only)
+
+If `_AI_ONBOARDING.md` exists at the repo root, this project has not been
+onboarded yet. Before any other work:
+
+1. Read `_AI_ONBOARDING.md` in full — it is the onboarding playbook.
+2. Follow it: audit the repository, then fill in every `STUB` in this file
+   and in the `docs/` files it refers to, using the research instructions
+   inside each stub.
+3. When every stub is filled and verified, **delete `_AI_ONBOARDING.md`**
+   and record the onboarding in `docs/CHANGELOG.md`.
+
+Do not delete `_AI_ONBOARDING.md` before the stubs are filled.
+
 ---
 
 ## General Agentic Development Principles
