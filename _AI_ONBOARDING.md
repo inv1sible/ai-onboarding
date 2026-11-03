@@ -8,8 +8,8 @@ applied as-is to another project: no project-specific content.
 into the target project (never overwrite its existing `README.md`), and copy
 this file as `_AI_ONBOARDING.md`. The `AGENTS.md` template tells the agent to
 follow this playbook on first run, fill in every stub, and then delete
-`_AI_ONBOARDING.md`. The kit's own entry point, `KIT.md`, lives only in this
-repo and is not copied.
+`_AI_ONBOARDING.md`. The kit's own entry point, `README_1ST.md`, lives only
+in this repo and is not copied.
 
 ---
 
@@ -151,6 +151,11 @@ directly into any onboarding skill.
 - `docs/CHANGELOG.md` — starts with this branch; earlier history not
   backfilled (honest about its own scope).
 
+In every file you fill (including `AGENTS.md` and `CLAUDE.md`), filled stubs
+leave no trace: the `STUB:` placeholder lines, the `STATUS: STUB` banners,
+and the "Research instructions" sections are scaffolding — delete them once
+the real content is in place.
+
 ### Step 4 — Add the tool adapter (`CLAUDE.md`)
 
 ```markdown
@@ -177,6 +182,10 @@ Before committing:
 
 - every "done" task re-checked against the actual repo state
 - stale path references grepped out (see Lesson 1 below)
+- template traces removed: `grep -rn -e 'STATUS: STUB' -e '<!-- STUB'
+  -e 'STUB:' -e '^- STUB' AGENTS.md CLAUDE.md docs/` returns nothing, and a
+  final read of each file shows no leftover placeholders (`<project>`,
+  `<fact>`, stub cells in tables, …)
 - secret scan over all new docs
 - rename fidelity checked (`git diff` shows `R100` for pure moves)
 - commit + push, MR opened
@@ -262,8 +271,8 @@ day for a medium project, most of it in steps 1–2.
 ### Phase B — Write the system
 - [ ] Copy the templates from this repo (`AGENTS.md`, `CLAUDE.md`, `docs/`,
       and this file as `_AI_ONBOARDING.md`) as the starting point — never
-      overwrite the target project's existing `README.md` (`KIT.md`
-      documents the kit itself and is not copied)
+      overwrite the target project's existing `README.md` (the kit's own
+      entry point, `README_1ST.md`, is not copied)
 - [ ] `AGENTS.md` at repo root using the §3/Step-2 structure (10 sections)
 - [ ] `docs/ARCHITECTURE.md` — system map with short code snippets
 - [ ] `docs/MEMORY.md` — conventions, naming, patterns, gotchas, do/don't
@@ -278,6 +287,9 @@ day for a medium project, most of it in steps 1–2.
 
 ### Phase C — Verify & finalize
 - [ ] Grep for stale paths/references after any reorganization
+- [ ] Grep for template traces — `grep -rn -e 'STATUS: STUB' -e '<!-- STUB'
+      -e 'STUB:' -e '^- STUB' AGENTS.md CLAUDE.md docs/` returns nothing;
+      no leftover placeholders in any filled file
 - [ ] Secret scan over all new docs
 - [ ] Re-verify every "done" task against repo state
 - [ ] Commit docs in their own branch/MR (docs-only = low-risk review)

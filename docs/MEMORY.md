@@ -3,6 +3,7 @@
 > **STATUS: STUB — template.** This file captures "how we write code here".
 > Research the repository and replace every `STUB` below with verified
 > facts. Derive every rule from the existing code, not from preference.
+> **Delete this banner once the file is filled in.**
 
 ## Research instructions (delete this section once filled in)
 

@@ -2,7 +2,7 @@
 
 > **STATUS: STUB — template.** General ideas and epics that outgrow any
 > single branch. Anything that outgrows the current branch moves here from
-> `TASKS.md`.
+> `TASKS.md`. **Delete this banner once the file is filled in.**
 
 ## Research instructions (delete this section once filled in)
 

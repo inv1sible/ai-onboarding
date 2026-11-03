@@ -7,7 +7,7 @@ stubbed `docs/` tree, and a self-driving onboarding playbook.
 
 There is deliberately **no `README.md`** in this repo: a target project's
 `README.md` belongs to that project, and this kit never overwrites it. This
-file (`KIT.md`) is the kit's own entry point instead.
+file (`README_1ST.md`) is the kit's own entry point instead.
 
 ## What's in the kit
 
@@ -17,7 +17,7 @@ file (`KIT.md`) is the kit's own entry point instead.
 | `CLAUDE.md` | Thin Claude Code adapter (`@AGENTS.md` import + tool notes) | Yes — copied verbatim, then filled |
 | `docs/` | Stubbed deep docs (ARCHITECTURE, MEMORY, TESTING, TASKS, ROADMAP, CHANGELOG) | Yes — copied verbatim, then filled |
 | `_AI_ONBOARDING.md` | The onboarding playbook (audit → write → verify) | Yes — copied verbatim, then **deleted by the agent** once onboarding is done |
-| `KIT.md` (this file) | The kit's own entry point | **No** — lives only in this repo |
+| `README_1ST.md` (this file) | The kit's own entry point | **No** — lives only in this repo |
 
 ## Quickstart — onboarding a target project
 
@@ -42,9 +42,9 @@ the design principles, lessons learned, and a reusable checklist — is in
 - `AGENTS.md`, `CLAUDE.md`, and `docs/` are **unfilled templates**. They must
   stay generic so they can be copied as-is. Do not fill their stubs with
   kit-specific content — that would break the kit.
-- The onboarding block in `AGENTS.md` contains a guard: if `KIT.md` exists at
-  the repo root, the agent treats this repo as the kit and must not fill
-  stubs or delete `_AI_ONBOARDING.md`.
+- The onboarding block in `AGENTS.md` contains a guard: if `README_1ST.md`
+  exists at the repo root, the agent treats this repo as the kit and must
+  not fill stubs or delete `_AI_ONBOARDING.md`.
 - Keep the kit's invariants when changing templates: one canonical entry
   point with thin adapters; stubs carry their own research instructions;
   `_AI_ONBOARDING.md` §7 (template skeleton) matches `AGENTS.md` 1:1.
@@ -59,7 +59,7 @@ the design principles, lessons learned, and a reusable checklist — is in
 AI-onboarding/
 ├── AGENTS.md              # template — canonical agent entry point (copied)
 ├── CLAUDE.md              # template — Claude Code adapter (copied)
-├── KIT.md                 # this file — the kit's own entry point (not copied)
+├── README_1ST.md          # this file — the kit's own entry point (not copied)
 ├── _AI_ONBOARDING.md      # the playbook (copied, deleted after onboarding)
 └── docs/                  # template deep docs (copied, then filled)
     ├── ARCHITECTURE.md

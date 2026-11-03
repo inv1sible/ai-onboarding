@@ -2,7 +2,8 @@
 
 > **STATUS: STUB — template.** Research the repository and replace every
 > `STUB` below with verified facts. Repository state is authoritative —
-> never copy from old docs or the README.
+> never copy from old docs or the README. **Delete this banner once the
+> file is filled in.**
 
 ## Research instructions (delete this section once filled in)
 

@@ -2,7 +2,8 @@
 
 > **STATUS: STUB — template.** Research the repository and replace every
 > `STUB` below with verified facts. The CI config is the authority for
-> commands — do NOT trust the README.
+> commands — do NOT trust the README. **Delete this banner once the file
+> is filled in.**
 
 ## Research instructions (delete this section once filled in)
 

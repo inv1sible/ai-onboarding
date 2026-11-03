@@ -2,7 +2,8 @@
 
 > **STATUS: STUB — template.** Append-only history, one entry per
 > branch/release. This changelog starts with the onboarding branch; earlier
-> history is not backfilled (honest about its own scope).
+> history is not backfilled (honest about its own scope). **Delete this
+> banner once the file is filled in.**
 
 ## Research instructions (delete this section once filled in)
 

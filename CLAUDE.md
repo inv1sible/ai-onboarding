@@ -27,7 +27,8 @@ Claude Code can read `AGENTS.md`; when a project also uses `CLAUDE.md`, use an
      project's user-facing language, the verified test command (if it differs
      from what the README claims), the single most important gotcha, and any
      Claude Code behavior worth pinning. If a fact belongs in AGENTS.md, add
-     it there — this file stays a thin adapter. -->
+     it there — this file stays a thin adapter. Delete this comment once the
+     notes are filled in. -->
 
 - <user-facing language rule.>
 - <verified test command, if it surprises.>

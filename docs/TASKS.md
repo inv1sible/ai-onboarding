@@ -3,7 +3,8 @@
 > **STATUS: STUB — template.** This file is **branch-scoped**: it answers
 > "what is happening on this branch right now, what's done, and what
 > carries over". Done tasks may be deleted on merge; open tasks carry over
-> to the next branch. Keep it short — it is the anti-transcript.
+> to the next branch. Keep it short — it is the anti-transcript. **Delete
+> this banner once the file is filled in.**
 
 ## Research instructions (delete this section once filled in)
 
