@@ -4,8 +4,8 @@ A playbook for driving an existing coding project into an AI-ready state —
 what to do, in what order, and the reasoning behind each step. Written to be
 applied as-is to another project: no project-specific content.
 
-**How to use it:** copy `AGENTS.md`, `CLAUDE.md`, `docs/`, and
-`.claude/skills/` from this repo into the target project (never overwrite
+**How to use it:** copy `AGENTS.md`, `CLAUDE.md`, `docs/`, and `.claude/`
+(skills + agents) from this repo into the target project (never overwrite
 its existing `README.md`), and copy this file as `_AI_ONBOARDING.md`. The
 `AGENTS.md` template tells the agent to follow this playbook on first run,
 fill in every stub, and then delete the onboarding scaffolding. In OpenCode
@@ -44,6 +44,7 @@ and that stays honest about what is true *right now*.
 | `AGENTS.md` (repo root) | **Canonical agent entry point.** What the project is, critical facts, verified commands, structure, conventions, do/don't. | All AI agents (Copilot, Claude Code, …) + humans | ≤ ~350 lines |
 | `CLAUDE.md` (repo root) | **Thin adapter** for Claude Code: `@AGENTS.md` import + a few tool-specific notes. | Claude Code only | ≤ ~40 lines |
 | `.claude/skills/ai-onboarding/SKILL.md` | **Onboarding skill** — thin native trigger for OpenCode and Claude Code; points to this playbook. Transient scaffolding, deleted at finalize. | OpenCode / Claude Code | ≤ ~60 lines |
+| `.claude/agents/` | **Workflow agents** — `analyst`, `reviewer-clean`, `reviewer-issue` for projects with an issue workflow. Persistent — not deleted at finalize. | Claude Code (native) | one file per agent |
 | `docs/ARCHITECTURE.md` | Full system map: topology, storage, request flow, services, integrations, config, models. | Agent deep-dives, new humans | as long as needed |
 | `docs/MEMORY.md` | Conventions, naming, patterns, gotchas, do/don't — the "how we do things here" knowledge. | Agent deep-dives | as long as needed |
 | `docs/TESTING.md` | The *real* test command, where tests live, what must be mocked, e2e roadmap. | Agent + CI | as long as needed |
@@ -276,8 +277,8 @@ day for a medium project, most of it in steps 1–2.
 
 ### Phase B — Write the system
 - [ ] Copy the templates from this repo (`AGENTS.md`, `CLAUDE.md`, `docs/`,
-      `.claude/skills/`, and this file as `_AI_ONBOARDING.md`) as the
-      starting point — never overwrite the target project's existing
+      `.claude/` — skills + agents, and this file as `_AI_ONBOARDING.md`)
+      as the starting point — never overwrite the target project's existing
       `README.md` (the kit's own entry point, `README_1ST.md`, is not
       copied)
 - [ ] `AGENTS.md` at repo root using the §3/Step-2 structure (10 sections)
