@@ -4,12 +4,14 @@ A playbook for driving an existing coding project into an AI-ready state —
 what to do, in what order, and the reasoning behind each step. Written to be
 applied as-is to another project: no project-specific content.
 
-**How to use it:** copy `AGENTS.md`, `CLAUDE.md`, and `docs/` from this repo
-into the target project (never overwrite its existing `README.md`), and copy
-this file as `_AI_ONBOARDING.md`. The `AGENTS.md` template tells the agent to
-follow this playbook on first run, fill in every stub, and then delete
-`_AI_ONBOARDING.md`. The kit's own entry point, `README_1ST.md`, lives only
-in this repo and is not copied.
+**How to use it:** copy `AGENTS.md`, `CLAUDE.md`, `docs/`, and
+`.claude/skills/` from this repo into the target project (never overwrite
+its existing `README.md`), and copy this file as `_AI_ONBOARDING.md`. The
+`AGENTS.md` template tells the agent to follow this playbook on first run,
+fill in every stub, and then delete the onboarding scaffolding. In OpenCode
+and Claude Code, the `ai-onboarding` skill is the native trigger for the
+same workflow. The kit's own entry point, `README_1ST.md`, lives only in
+this repo and is not copied.
 
 ---
 
@@ -41,6 +43,7 @@ and that stays honest about what is true *right now*.
 |------|------|----------|-------------|
 | `AGENTS.md` (repo root) | **Canonical agent entry point.** What the project is, critical facts, verified commands, structure, conventions, do/don't. | All AI agents (Copilot, Claude Code, …) + humans | ≤ ~350 lines |
 | `CLAUDE.md` (repo root) | **Thin adapter** for Claude Code: `@AGENTS.md` import + a few tool-specific notes. | Claude Code only | ≤ ~40 lines |
+| `.claude/skills/ai-onboarding/SKILL.md` | **Onboarding skill** — thin native trigger for OpenCode and Claude Code; points to this playbook. Transient scaffolding, deleted at finalize. | OpenCode / Claude Code | ≤ ~60 lines |
 | `docs/ARCHITECTURE.md` | Full system map: topology, storage, request flow, services, integrations, config, models. | Agent deep-dives, new humans | as long as needed |
 | `docs/MEMORY.md` | Conventions, naming, patterns, gotchas, do/don't — the "how we do things here" knowledge. | Agent deep-dives | as long as needed |
 | `docs/TESTING.md` | The *real* test command, where tests live, what must be mocked, e2e roadmap. | Agent + CI | as long as needed |
@@ -51,9 +54,10 @@ and that stays honest about what is true *right now*.
 Key decisions:
 
 - **One canonical source of truth** (`AGENTS.md`). Tool-specific files
-  (`CLAUDE.md`, and e.g. a future `.github/copilot-instructions.md`) are thin
-  imports/adapters, never parallel sources of truth. This prevents drift
-  between "what Copilot reads" and "what Claude reads".
+  (`CLAUDE.md`, the `ai-onboarding` skill, and e.g. a future
+  `.github/copilot-instructions.md`) are thin imports/adapters, never
+  parallel sources of truth. This prevents drift between "what Copilot
+  reads" and "what Claude reads".
 - **UPPER_CASE `.md` filenames** for all project docs (convention recorded in
   `AGENTS.md` §6) so docs are visually distinct from code.
 - **Docs live in `docs/`; the root keeps only the entry points**
@@ -186,6 +190,8 @@ Before committing:
   -e 'STUB:' -e '^- STUB' AGENTS.md CLAUDE.md docs/` returns nothing, and a
   final read of each file shows no leftover placeholders (`<project>`,
   `<fact>`, stub cells in tables, …)
+- onboarding scaffolding removed in the same commit (`_AI_ONBOARDING.md`
+  and `.claude/skills/ai-onboarding/`)
 - secret scan over all new docs
 - rename fidelity checked (`git diff` shows `R100` for pure moves)
 - commit + push, MR opened
@@ -270,9 +276,10 @@ day for a medium project, most of it in steps 1–2.
 
 ### Phase B — Write the system
 - [ ] Copy the templates from this repo (`AGENTS.md`, `CLAUDE.md`, `docs/`,
-      and this file as `_AI_ONBOARDING.md`) as the starting point — never
-      overwrite the target project's existing `README.md` (the kit's own
-      entry point, `README_1ST.md`, is not copied)
+      `.claude/skills/`, and this file as `_AI_ONBOARDING.md`) as the
+      starting point — never overwrite the target project's existing
+      `README.md` (the kit's own entry point, `README_1ST.md`, is not
+      copied)
 - [ ] `AGENTS.md` at repo root using the §3/Step-2 structure (10 sections)
 - [ ] `docs/ARCHITECTURE.md` — system map with short code snippets
 - [ ] `docs/MEMORY.md` — conventions, naming, patterns, gotchas, do/don't
@@ -294,7 +301,8 @@ day for a medium project, most of it in steps 1–2.
 - [ ] Re-verify every "done" task against repo state
 - [ ] Commit docs in their own branch/MR (docs-only = low-risk review)
 - [ ] Record the onboarding itself in `docs/CHANGELOG.md`
-- [ ] **Delete `_AI_ONBOARDING.md`** — the onboarding is done; the doc
+- [ ] **Delete the onboarding scaffolding: `_AI_ONBOARDING.md` and
+      `.claude/skills/ai-onboarding/`** — the onboarding is done; the doc
       system is now self-sufficient
 
 ### Ongoing maintenance (the loop that keeps it working)

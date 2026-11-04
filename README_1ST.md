@@ -17,19 +17,21 @@ file (`README_1ST.md`) is the kit's own entry point instead.
 | `CLAUDE.md` | Thin Claude Code adapter (`@AGENTS.md` import + tool notes) | Yes — copied verbatim, then filled |
 | `docs/` | Stubbed deep docs (ARCHITECTURE, MEMORY, TESTING, TASKS, ROADMAP, CHANGELOG) | Yes — copied verbatim, then filled |
 | `_AI_ONBOARDING.md` | The onboarding playbook (audit → write → verify) | Yes — copied verbatim, then **deleted by the agent** once onboarding is done |
+| `.claude/skills/ai-onboarding/` | Onboarding skill — thin native trigger for OpenCode + Claude Code, points at the playbook | Yes — copied verbatim, then **deleted by the agent** with the playbook |
 | `README_1ST.md` (this file) | The kit's own entry point | **No** — lives only in this repo |
 
 ## Quickstart — onboarding a target project
 
-1. Copy `AGENTS.md`, `CLAUDE.md`, and the `docs/` directory from this repo
-   into the target project's root. **Never overwrite the target's existing
-   `README.md`.**
+1. Copy `AGENTS.md`, `CLAUDE.md`, the `docs/` directory, and the
+   `.claude/skills/` directory from this repo into the target project's
+   root. **Never overwrite the target's existing `README.md`.**
 2. Copy `_AI_ONBOARDING.md` into the target root, keeping its name.
 3. Open the target project with your coding agent. The onboarding block at
-   the top of the copied `AGENTS.md` makes the process self-driving: the
-   agent reads `_AI_ONBOARDING.md`, audits the *real* repository state,
-   fills every `STUB` with verified facts, and deletes `_AI_ONBOARDING.md`
-   when done.
+   the top of the copied `AGENTS.md` — or the `ai-onboarding` skill in
+   OpenCode and Claude Code — makes the process self-driving: the agent
+   reads `_AI_ONBOARDING.md`, audits the *real* repository state, fills
+   every `STUB` with verified facts, and deletes the onboarding scaffolding
+   (playbook + skill) when done.
 4. Commit the result. The target is now AI-ready: one canonical entry point,
    honest deep docs, and a per-branch handover loop (TASKS/CHANGELOG).
 
@@ -45,6 +47,10 @@ the design principles, lessons learned, and a reusable checklist — is in
 - The onboarding block in `AGENTS.md` contains a guard: if `README_1ST.md`
   exists at the repo root, the agent treats this repo as the kit and must
   not fill stubs or delete `_AI_ONBOARDING.md`.
+- `.claude/skills/ai-onboarding/SKILL.md` is a **thin adapter**, like
+  `CLAUDE.md`: it carries the trigger and the guard and points at the
+  playbook. Never duplicate playbook workflow into it — the playbook wins
+  on any disagreement.
 - Keep the kit's invariants when changing templates: one canonical entry
   point with thin adapters; stubs carry their own research instructions;
   `_AI_ONBOARDING.md` §7 (template skeleton) matches `AGENTS.md` 1:1.
@@ -61,6 +67,10 @@ AI-onboarding/
 ├── CLAUDE.md              # template — Claude Code adapter (copied)
 ├── README_1ST.md          # this file — the kit's own entry point (not copied)
 ├── _AI_ONBOARDING.md      # the playbook (copied, deleted after onboarding)
+├── .claude/
+│   └── skills/
+│       └── ai-onboarding/
+│           └── SKILL.md   # onboarding skill (copied, deleted after onboarding)
 └── docs/                  # template deep docs (copied, then filled)
     ├── ARCHITECTURE.md
     ├── CHANGELOG.md
