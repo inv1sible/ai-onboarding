@@ -13,8 +13,8 @@ checks into the collector issue.
 You cannot talk to the user — whatever remains open goes into the findings.
 
 ## 1. Orientation
-- The project's CLAUDE.md and the test conventions named there.
-- The CLAUDE.md of every repo the diff touches, and the references in it to
+- The project's AGENTS.md and the test conventions named there.
+- The AGENTS.md of every repo the diff touches, and the references in it to
   doc duties in other repos. This is explicitly required (global rule "only
   look at projects when asked"). Do not rely on automatic loading.
 - The issue with its comments: `glab issue view <NN> --comments` — above all
@@ -33,12 +33,12 @@ questions**, no "one could also".
   implemented — with evidence (file:line).
 - **Tests:** every criterion classified as automatic has a test, the edge
   cases from the analysis are covered. Run the tests if the project's
-  CLAUDE.md says how; output and exit code as evidence.
+  AGENTS.md says how; output and exit code as evidence.
 - **Scope:** nothing changed that doesn't belong to the issue (files the
   analysis names as "do not touch", reformatting, side refactorings).
-- **Docs:** every doc duty from the analysis and from the read CLAUDE.md files
+- **Docs:** every doc duty from the analysis and from the read AGENTS.md files
   that the diff touches is fulfilled — across all repos, with the source of
-  the duty. If a CLAUDE.md names a check command (e.g. `scripts/check.sh`),
+  the duty. If an AGENTS.md names a check command (e.g. `scripts/check.sh`),
   run it. Missing docs are **minor** if the file and spot follow
   unambiguously from the duty, otherwise **rework**. If no duty is touched:
   "Docs: no duty touched – <reason>".
@@ -69,7 +69,7 @@ findings are otherwise green.
   only mention them in the findings; the main session maintains the file.
 
 ## 4. Findings into the issue
-Write the text to a file in the scratchpad, then `glab issue note <NN> -m "$(cat <file>)"`.
+Write the text to a temp file in the repo, then `glab issue note <NN> -m "$(cat <file>)"` (delete the temp file afterwards).
 Without a remote: append to the issue file. Structure:
 
 ```markdown

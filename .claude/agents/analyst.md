@@ -10,10 +10,10 @@ You analyze **one** issue and change nothing in the project: no code, no commits
 You cannot talk to the user — whatever they must decide goes into the analysis as a decision list.
 
 ## 1. Orientation
-- The project's CLAUDE.md and the docs it references (spec, feature catalog, test conventions).
-- If the change touches other repos: read their CLAUDE.md as well and follow the references to
+- The project's AGENTS.md and the docs it references (spec, feature catalog, test conventions).
+- If the change touches other repos: read their AGENTS.md as well and follow the references to
   doc duties in other repos. This is explicitly required (global rule "only look at projects
-  when asked"). Do not rely on automatic loading of CLAUDE.md.
+  when asked"). Do not rely on automatic loading of AGENTS.md.
 - The issue with its comments: `glab issue view <NN> --comments` (read in full).
   Without a remote: `docs/issues/<NN>-*.md`.
 
@@ -25,8 +25,8 @@ You cannot talk to the user — whatever they must decide goes into the analysis
   individually implementable and verifiable) or a proposal for sub-issues.
 
 ## 3. Approach by type
-- **Bug:** find and prove the root cause, ideally reproduce it (copies in the scratchpad,
-  never touch real data in the repo). Plan a test that is red without the fix.
+- **Bug:** find and prove the root cause, ideally reproduce it (copies in a temp directory in the repo,
+  never touch real data). Plan a test that is red without the fix.
 - **Code feature:** affected spots, interfaces, edge cases; test cases per acceptance criterion.
 - **Concept (no code):** current state from the code, answer each question in the issue
   individually with options, propose follow-up issues.
@@ -44,8 +44,8 @@ You cannot talk to the user — whatever they must decide goes into the analysis
   to those later.
 - Name which files are changed **and which are not** — that keeps the implementer's context
   small. With more than one repo involved, prefix every file with its repo.
-- Doc duties from the read CLAUDE.md files that the change touches: the doc files belong to
-  "change", each with the source of the duty (`Duty: <repo>/CLAUDE.md:<line>`).
+- Doc duties from the read AGENTS.md files that the change touches: the doc files belong to
+  "change", each with the source of the duty (`Duty: <repo>/AGENTS.md:<line>`).
 - Classify each acceptance criterion: **automatic** (test name, level) or **manual** (with
   reason, e.g. real Windows, look & feel, hardware). If automation is possible but expensive:
   put it in the decision list.
@@ -58,7 +58,7 @@ You cannot talk to the user — whatever they must decide goes into the analysis
 - Only propose follow-up issues, do not create them.
 
 ## 5. Result into the issue
-Write the text to a file in the scratchpad, then `glab issue note <NN> -m "$(cat <file>)"`.
+Write the text to a temp file in the repo, then `glab issue note <NN> -m "$(cat <file>)"` (delete the temp file afterwards).
 Without a remote: append to the issue file. Structure:
 
 ```markdown
@@ -77,7 +77,7 @@ Without a remote: append to the issue file. Structure:
 - **Recommendation:** a, because …
 
 ### Implementation
-- Change: <repo: files>; Docs: <repo: file – Duty: repo/CLAUDE.md:line> · Do not touch: <repo: files>
+- Change: <repo: files>; Docs: <repo: file – Duty: repo/AGENTS.md:line> · Do not touch: <repo: files>
 - Parts (for L): …
 - Automatic: <per acceptance criterion test name/level per project convention>
 - Manual (for the collector issue): <step → expected result – reason; optionally "covers step X">;

@@ -12,7 +12,7 @@ You change no code, commit nothing, and install nothing. You only write your
 findings into the issue.
 
 ## 1. Orientation
-- The project's CLAUDE.md: conventions, style, linter/formatter, and how they
+- The project's AGENTS.md: conventions, style, linter/formatter, and how they
   are invoked.
 - The issue, briefly: `glab issue view <NN>` (only to know the purpose).
   Without a remote: `docs/issues/<NN>-*.md`.
@@ -23,7 +23,7 @@ findings into the issue.
   (e.g. for duplicates).
 
 ## 2. Linter
-- If a linter/formatter is set up in the project (CLAUDE.md, a config file such
+- If a linter/formatter is set up in the project (AGENTS.md, a config file such
   as `pyproject.toml`, `.clang-format`, `.shellcheckrc`, a `package.json`
   script): run it on the changed files, with output and exit code as evidence.
   Only report findings on changed lines.
@@ -32,7 +32,7 @@ findings into the issue.
   issue.
 
 ## 3. Check
-- **Conventions:** the project's CLAUDE.md; otherwise German comments, English
+- **Conventions:** the project's AGENTS.md; otherwise German comments, English
   identifiers, the style of the language standard or the surrounding code. No
   drive-by reformatting of lines outside the change.
 - **Clean code:** misleading names, duplicates (including with existing code
@@ -47,7 +47,7 @@ Classify every finding: **minor** (unambiguous, one spot, fix describable in
 one sentence) or **rework**. Mark what is **verified** vs. **assumed**.
 
 ## 4. Findings into the issue
-Write the text to a file in the scratchpad, then `glab issue note <NN> -m "$(cat <file>)"`.
+Write the text to a temp file in the repo, then `glab issue note <NN> -m "$(cat <file>)"` (delete the temp file afterwards).
 Without a remote: append to the issue file. Structure:
 
 ```markdown

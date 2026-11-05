@@ -1,6 +1,6 @@
 ---
 name: AI Onboarding
-description: "First-time onboarding of a repository for AI coding agents. Use when `_AI_ONBOARDING.md` exists at the repo root (the project has not been onboarded yet). Audits the real repo state, fills every stub in AGENTS.md, CLAUDE.md, and docs/ with verified facts, removes all template traces, then removes the onboarding scaffolding. Do not use in the template kit itself (marked by README_1ST.md)."
+description: "First-time onboarding of a repository for AI coding agents. Use when `_AI_ONBOARDING.md` exists at the repo root (the project has not been onboarded yet). Audits the real repo state, fills every stub in AGENTS.md and docs/ with verified facts, removes all template traces, then removes the onboarding scaffolding. Do not use in the template kit itself (marked by README_1ST.md)."
 ---
 
 # AI Onboarding
@@ -22,7 +22,7 @@ playbook disagree, the playbook wins.
 1. **Audit (read-only).** Git state, CI config, entry points, config files,
    runtime artifacts. Derive the 5–8 critical facts from evidence, never
    from existing docs.
-2. **Fill.** Every stub in `AGENTS.md`, `CLAUDE.md`, and `docs/` with
+2. **Fill.** Every stub in `AGENTS.md` and `docs/` with
    verified facts. Commands must be actually verified — CI config is the
    authority for the test command.
 3. **Clean up template traces as you fill.** Delete the stub comments,
@@ -31,12 +31,12 @@ playbook disagree, the playbook wins.
    scratch.
 4. **Finalize.**
    - `grep -rn -e 'STATUS: STUB' -e '<!-- STUB' -e 'STUB:' -e '^- STUB'
-     AGENTS.md CLAUDE.md docs/` returns nothing.
+     AGENTS.md docs/` returns nothing.
    - Stale path references grepped out; secret scan over all new docs;
      every "done" task re-verified against repo state.
    - Record the onboarding in `docs/CHANGELOG.md`.
    - Only then delete the onboarding scaffolding: `_AI_ONBOARDING.md` and
-     this skill (`.claude/skills/ai-onboarding/`), in the same commit.
+     this skill (`.agents/skills/ai-onboarding/`), in the same commit.
 
 The result is a small, layered, honest doc system: `AGENTS.md` as the single
 canonical entry point, deep docs in `docs/`, and a per-branch handover loop

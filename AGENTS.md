@@ -16,8 +16,8 @@ onboarded yet. Before any other work:
 
 1. **Guard — is this the template kit itself?** If `README_1ST.md` exists at
    the repo root, this repository is the AI-onboarding kit, not an onboarding
-   target. Its `AGENTS.md`, `CLAUDE.md`, `docs/`, and `_AI_ONBOARDING.md`
-   are generic templates and the playbook, meant to be *copied* into other
+   target. Its `AGENTS.md`, `docs/`, and `_AI_ONBOARDING.md` are generic
+   templates and the playbook, meant to be *copied* into other
    projects — not filled in here. Do **not** fill the stubs with kit-specific
    content and do **not** delete `_AI_ONBOARDING.md`; it is the kit's core
    asset. Skip the steps below and work on the kit itself.
@@ -35,7 +35,7 @@ onboarded yet. Before any other work:
    removed (the playbook's finalize step includes the final check),
    record the onboarding in `docs/CHANGELOG.md`, then delete the onboarding
    scaffolding: `_AI_ONBOARDING.md` and, if present,
-   `.claude/skills/ai-onboarding/` (the onboarding skill).
+   `.agents/skills/ai-onboarding/` (the onboarding skill).
 
 Do not delete `_AI_ONBOARDING.md` before the stubs are filled — and never in
 the kit's own repo (see the guard above).
@@ -152,7 +152,8 @@ See [Testing](docs/TESTING.md) for how to add tests and what to mock.
 ```
 <project>/
 ├── AGENTS.md                  # ← you are here (agent entry point)
-├── CLAUDE.md                  # Claude Code entry → imports AGENTS.md
+├── .agents/skills/            # shared skills (canonical location; native in pi + OpenCode)
+├── .claude/agents/            # Claude Code subagents, if the issue-workflow trio is used
 ├── docs/                      # project docs (UPPER_CASE .md files)
 │   ├── ARCHITECTURE.md        #   full system map
 │   ├── MEMORY.md              #   conventions, patterns, gotchas
