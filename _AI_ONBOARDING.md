@@ -390,8 +390,8 @@ discipline / security boundaries / durable knowledge)
 - Don't create per-tool instruction files — not with divergent content, and
   not at all for harnesses that read `AGENTS.md` natively (pi, OpenCode,
   Claude Code).
-- Don't duplicate skills into per-harness directories (`.claude/skills/`,
-  `.pi/skills/`, …) — the canonical skills location is `.agents/skills/`.
+- Don't duplicate skills into per-harness directories (`.pi/skills/`, …) —
+  the canonical skills location is `.agents/skills/`.
 - Don't document unverified commands "from memory".
 - Don't backfill history you don't have (changelog starts now, honestly).
 - Don't use chat transcripts as project memory — distill into TASKS/CHANGELOG.
