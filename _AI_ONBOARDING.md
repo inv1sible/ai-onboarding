@@ -194,14 +194,17 @@ Before committing:
 - every "done" task re-checked against the actual repo state
 - stale path references grepped out (see Lesson 1 below)
 - template traces removed: `grep -rn -e 'STATUS: STUB' -e '<!-- STUB'
-  -e 'STUB:' -e '^- STUB' AGENTS.md docs/` returns nothing, and a
+  -e 'STUB:' -e '^- STUB' -e '| STUB' -e 'Onboarding (first run only)'
+  AGENTS.md docs/` returns nothing, and a
   final read of each file shows no leftover placeholders (`<project>`,
   `<fact>`, stub cells in tables, …)
-- onboarding scaffolding removed in the same commit (`_AI_ONBOARDING.md`
-  and `.agents/skills/ai-onboarding/`)
+- onboarding scaffolding removed in the same commit (`_AI_ONBOARDING.md`,
+  `.agents/skills/ai-onboarding/`, and the "Onboarding (first run only)"
+  section of `AGENTS.md`)
 - secret scan over all new docs
 - rename fidelity checked (`git diff` shows `R100` for pure moves)
-- commit + push, MR opened
+- stage the changes and propose a commit; commit, push, or open an MR
+  only when the user asks
 
 ---
 
@@ -305,14 +308,16 @@ day for a medium project, most of it in steps 1–2.
 ### Phase C — Verify & finalize
 - [ ] Grep for stale paths/references after any reorganization
 - [ ] Grep for template traces — `grep -rn -e 'STATUS: STUB' -e '<!-- STUB'
-      -e 'STUB:' -e '^- STUB' AGENTS.md docs/` returns nothing;
+      -e 'STUB:' -e '^- STUB' -e '| STUB' -e 'Onboarding (first run only)'
+      AGENTS.md docs/` returns nothing;
       no leftover placeholders in any filled file
 - [ ] Secret scan over all new docs
 - [ ] Re-verify every "done" task against repo state
 - [ ] Commit docs in their own branch/MR (docs-only = low-risk review)
 - [ ] Record the onboarding itself in `docs/CHANGELOG.md`
-- [ ] **Delete the onboarding scaffolding: `_AI_ONBOARDING.md` and
-      `.agents/skills/ai-onboarding/`** — the onboarding is done; the doc
+- [ ] **Delete the onboarding scaffolding: `_AI_ONBOARDING.md`,
+      `.agents/skills/ai-onboarding/`, and the "Onboarding (first run
+      only)" section of `AGENTS.md`** — the onboarding is done; the doc
       system is now self-sufficient
 
 ### Ongoing maintenance (the loop that keeps it working)
@@ -343,7 +348,8 @@ ROADMAP, CHANGELOG.
 ## Onboarding (first run only)
 (if _AI_ONBOARDING.md exists: follow it, fill every stub it refers to,
 record the onboarding in docs/CHANGELOG.md, then delete the onboarding
-scaffolding: _AI_ONBOARDING.md and .agents/skills/ai-onboarding/)
+scaffolding: _AI_ONBOARDING.md, .agents/skills/ai-onboarding/, and this
+section)
 
 ## General agentic development principles
 (think before coding / clarify before implementing / keep it simple /

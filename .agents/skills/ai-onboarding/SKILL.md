@@ -1,5 +1,5 @@
 ---
-name: AI Onboarding
+name: ai-onboarding
 description: "First-time onboarding of a repository for AI coding agents. Use when `_AI_ONBOARDING.md` exists at the repo root (the project has not been onboarded yet). Audits the real repo state, fills every stub in AGENTS.md and docs/ with verified facts, removes all template traces, then removes the onboarding scaffolding. Do not use in the template kit itself (marked by README_1ST.md)."
 ---
 
@@ -31,12 +31,14 @@ playbook disagree, the playbook wins.
    scratch.
 4. **Finalize.**
    - `grep -rn -e 'STATUS: STUB' -e '<!-- STUB' -e 'STUB:' -e '^- STUB'
-     AGENTS.md docs/` returns nothing.
+     -e '| STUB' -e 'Onboarding (first run only)' AGENTS.md docs/`
+     returns nothing.
    - Stale path references grepped out; secret scan over all new docs;
      every "done" task re-verified against repo state.
    - Record the onboarding in `docs/CHANGELOG.md`.
-   - Only then delete the onboarding scaffolding: `_AI_ONBOARDING.md` and
-     this skill (`.agents/skills/ai-onboarding/`), in the same commit.
+   - Only then delete the onboarding scaffolding: `_AI_ONBOARDING.md`,
+     this skill (`.agents/skills/ai-onboarding/`), and the "Onboarding
+     (first run only)" section of `AGENTS.md`, in the same commit.
 
 The result is a small, layered, honest doc system: `AGENTS.md` as the single
 canonical entry point, deep docs in `docs/`, and a per-branch handover loop

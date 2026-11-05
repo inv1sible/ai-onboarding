@@ -34,8 +34,9 @@ onboarded yet. Before any other work:
 5. When every stub is filled and verified and all template traces are
    removed (the playbook's finalize step includes the final check),
    record the onboarding in `docs/CHANGELOG.md`, then delete the onboarding
-   scaffolding: `_AI_ONBOARDING.md` and, if present,
-   `.agents/skills/ai-onboarding/` (the onboarding skill).
+   scaffolding: `_AI_ONBOARDING.md`, if present
+   `.agents/skills/ai-onboarding/` (the onboarding skill), and this whole
+   "Onboarding (first run only)" section of `AGENTS.md`.
 
 Do not delete `_AI_ONBOARDING.md` before the stubs are filled — and never in
 the kit's own repo (see the guard above).
